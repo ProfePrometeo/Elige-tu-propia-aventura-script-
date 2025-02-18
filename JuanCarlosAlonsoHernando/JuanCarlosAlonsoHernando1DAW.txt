@@ -25,6 +25,7 @@ function LuchaEncapuchado {
     Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rapido y te esquiva.  " 
     Write-Host "Lanza un hechizo, inmovilizandote. Antes de perder el conocimiento, escuchas:  "
     Write-Host "Has cometido un error..."
+    pause
     Final1
 }
     
@@ -34,6 +35,7 @@ function HuirBiblioteca {
     $host.UI.RawUI.BackgroundColor = "Black"
     Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicacion exacta de la Torre del Eco."  
     Write-Host "Decides partir de inmediato." 
+    pause
     Torre
 }
     
@@ -83,6 +85,7 @@ function Esconderse {
     $host.UI.RawUI.BackgroundColor = "Black"
     Write-Host "Observas en silencio y ves a la criatura abrir un portal.  " 
     Write-Host "Sin dudar, te cuelas en el y apareces dentro de la Torre del Eco." 
+    pause
     Torre
 }
     
@@ -112,6 +115,7 @@ function FuerzaBruta {
     $host.UI.RawUI.BackgroundColor = "Black"
     Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestruccion." 
     Write-Host "Todo se vuelve blanco." 
+    pause
     Final2
 }
     
@@ -141,6 +145,7 @@ function BuscarPista {
     $host.UI.RawUI.BackgroundColor = "Black"
     Write-Host "Ignoras la Torre y sigues el consejo de la criatura.  "    
     Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba."  
+    pause
     Final3
 }
     
