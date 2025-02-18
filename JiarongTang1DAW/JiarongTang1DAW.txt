@@ -1,0 +1,237 @@
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+Clear-Host
+#equivalencia de title lo he encontrado en la pagina de microsoft https://learn.microsoft.com/es-es/windows/terminal/tutorials/tab-title
+$Host.UI.RawUI.WindowTitle = "El Destino de Eldoria"
+
+# la equivalencia del comando color 06 lo he tenido que preguntar a ChatGPT porque no encontraba una respuesta clara en internet
+$Host.UI.RawUI.ForegroundColor = "Yellow"
+$Host.UI.RawUI.BackgroundColor = "Black"
+
+#equivalencia de echo en https://stackoverflow.com/questions/707646/echo-equivalent-in-powershell-for-script-testing
+Write-Host ================================
+Write-Host      EL DESTINO DE ELDORIA
+Write-Host ================================
+Write-Host
+Write-Host  El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba.
+Write-Host Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos.
+Write-Host Solo una persona puede recuperarlo: tu.
+Write-Host
+Write-Host Donde comienzas tu busqueda
+Write-Host 1. La biblioteca de los Sabios
+Write-host 2. El bosque de las Sombras
+#buscado la lectura por teclado en https://es.eitca.org/cybersecurity/eitc-is-wsa-windows-server-administration/working-with-powershell/storing-user-input-into-variables-with-powershell/examination-review-storing-user-input-into-variables-with-powershell/what-is-the-syntax-for-creating-a-variable-and-prompting-the-user-for-input-in-powershell/
+$opcion = (Read-Host "Elige 1 o 2")
+<# el while es para el control de errores para que cuando se introduzca un valor distinto al esperado no se vuelva loco la terminal 
+El empleo del while lo he sacado de las clases de programacion que es casi igual
+El empleo de los operadores de comparacion y logicos son de https://achirou.com/powershell-para-hackers-guia-rapida/#Variables#>
+while ($opcion -ne 2 -and $opcion -ne 1 ) {
+    Write-Host Opcion no valida, vuelve a elegir
+    $opcion = (Read-Host "Elige 1 o 2")
+}
+#las funciones los he creado en orden inverso porque sino no se reconoce correctamente
+function final4 {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Magenta" 
+    Write-Host ======================================
+    Write-Host     FINAL: EL NUEVO SENOR OSCURO
+    Write-Host ======================================
+    Write-Host Decides usar el Cristal para aumentar tu poder.
+    Write-Host Te conviertes en un ser temido, gobernando con puno de hierro
+    Pause
+    Exit
+}
+
+function final3 {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Green"
+    Write-Host ======================================
+    Write-Host     FINAL: EL HEROE DE ELDORIA
+    Write-Host ======================================
+    Write-Host Regresas con el Cristal del Alba y restauras el equilibrio.
+    Write-Host El reino celebra tu valentia y tu nombre sera recordado para siempre
+    Pause
+    Exit
+}
+
+function final2 {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Red"
+    Write-Host ======================================
+    Write-Host     FINAL: EL HEROE DE ELDORIA
+    Write-Host ======================================
+    Write-Host Regresas con el Cristal del Alba y restauras el equilibrio.
+    Write-Host El reino celebra tu valentia y tu nombre sera recordado para siempre
+    Pause
+    Exit
+}
+
+function final1 {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Gray"
+    Write-Host ======================================
+    Write-Host          FINAL: DESTINO SELLADO
+    Write-Host ======================================
+    Write-Host Fuiste derrotado antes de conocer la verdad.
+    Write-Host El Cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad.
+    Pause
+    Exit
+}
+
+function buscarPista {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Green"
+    Write-Host Ignoras la Torre y sigues el consejo de la criatura.
+    Write-Host Descubres que el verdadero Cristal estaba oculto en el Templo del Alba.
+    Pause
+    final3
+}
+
+function mecanismo {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "White"
+    Write-Host Encuentras un patron en el suelo y lo activas con cuidado.
+    Write-Host La trampa se desctiva y puedes tomar el Cristal.
+    Write-Host
+    Write-Host Que haras ahora
+    Write-Host 1. Regresar a Eldoria
+    Write-Host 2. Usar el poder del Cristal para ti mismo
+    $opcion = (Read-Host "Elige 1 o 2")
+    while ($opcion -ne 2 -and $opcion -ne 1 ) {
+        Write-Host Opcion no valida, vuelve a elegir
+        $opcion = (Read-Host "Elige 1 o 2")
+    }
+    if($opcion -eq 1){
+        final3
+    }else{
+        final4
+    }
+}
+
+function fuerzaBruta {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Red"
+    Write-Host Intentas romper la trampa con tu espada, pero activa un hechizo de autodestruccion.
+    Write-Host Todo se vuelve blanco.
+    Pause
+    final2
+}
+
+function torre {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Gray"
+    Write-Host La Torre del Eco es un lugar oscuro y en ruinas.
+    Write-Host Encuentras el Cristal del Alba, pero hay una trampa magica.
+    Write-Host
+    Write-Host Como intentas desactivarla
+    Write-Host 1. Con fuerza bruta
+    Write-Host 2. Buscando un mecanismo oculto
+    $opcion = (Read-Host "Elige 1 o 2")
+    while ($opcion -ne 2 -and $opcion -ne 1 ) {
+        Write-Host Opcion no valida, vuelve a elegir
+        $opcion = (Read-Host "Elige 1 o 2")
+    }
+    if($opcion -eq 1){
+        fuerzaBruta
+    }else{
+        mecanismo
+    }
+}
+function esconderse {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "DarkGray"
+    Write-Host Observas en silencio y ves a la criatura abrir un portal.
+    Write-Host Sin dudar, te cuelas en el y apareces dentro de la Torre del Eco.
+    Pause
+    torre
+}
+
+function hablarCriatura {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Cyan"
+    Write-Host La criatura se presenta como un guardian del Cristal.
+    Write-Host Te advierte que la Torre del Eco es una trampa mortal.
+    Write-Host
+    Write-Host Le crees
+    Write-Host 1. Si, decides buscar otra pistas
+    Write-Host 2. No, continuas a la Torre
+    $opcion = (Read-Host "Elige 1 o 2")
+    while ($opcion -ne 2 -and $opcion -ne 1 ) {
+        Write-Host Opcion no valida, vuelve a elegir
+        $opcion = (Read-Host "Elige 1 o 2")
+    }
+    if($opcion -eq 1){
+        buscarPista
+    }else{
+        torre
+    }
+}
+
+function huirBiblioteca {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Green"
+    Write-Host Escapas de la biblioteca y encuentras un mapa con la ubicacion exacta de la Torre del Eco.
+    Write-Host Decides partir de inmediato.
+    Pause
+    torre
+}
+
+function luchaEncapuchado {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Red"
+    Write-Host Desenvainas tu espada y atacas, pero el encapuchado es rapido y te esquiva.
+    Write-Host Lanza un hechizo, inmovilizandote. Antes de perder el conocimiento, escuchas:
+    Write-Host Has cometido un error....
+    Pause
+    final1
+}
+function Biblioteca {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Blue"
+    Write-Host En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco.
+    Write-Host Una figura encapuchada te observa y susurra: NO deberias de estar aqui...
+    Write-Host
+    Write-Host Que haras
+    Write-Host 1. Enfrentarlo con tu espada
+    Write-Host 2. Huir y buscar mas pistas
+    $opcion = (Read-Host "Elige 1 o 2")
+    while ($opcion -ne 2 -and $opcion -ne 1 ) {
+        Write-Host Opcion no valida, vuelve a elegir
+        $opcion = (Read-Host "Elige 1 o 2")
+    }
+    if ($opcion -eq 1) {
+        <# Action to perform if the condition is true #>
+        luchaEncapuchado
+    }else{
+        huirBiblioteca
+    }
+}
+
+function Bosque {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = "Green"
+    Write-Host El bosque esta envuelto en niebla. Encuentras un circulo de piedras brillantes
+    Write-Host Una criatura sombria emerge de entre los arboles.
+    Write-Host
+    Write-Host Que haras
+    Write-Host 1. Hablar con la criatura
+    Write-Host 2. Esconderte y observar
+    $opcion = (Read-Host "Elige 1 o 2")
+    while ($opcion -ne 2 -and $opcion -ne 1 ) {
+        Write-Host Opcion no valida, vuelve a elegir
+        $opcion = (Read-Host "Elige 1 o 2")
+    }
+    if ($opcion -eq 1) {
+        <# Action to perform if the condition is true #>
+        hablarCriatura
+    }else{
+        esconderse
+    }
+}
+
+if ($opcion -eq 1) {
+    <# Action to perform if the condition is true #>
+    Biblioteca
+}else{
+    Bosque
+}
