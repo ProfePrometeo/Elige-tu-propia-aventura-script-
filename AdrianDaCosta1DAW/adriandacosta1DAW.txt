@@ -1,0 +1,173 @@
+function Get-UserChoice {
+    param (
+        [string]$prompt
+    )
+    do {
+        $choice = Read-Host $prompt
+    } while ($choice -ne "1" -and $choice -ne "2")
+    return $choice
+}
+
+Clear-Host
+Write-Host "===============================" -ForegroundColor Yellow
+Write-Host "     EL DESTINO DE ELDORIA" -ForegroundColor Yellow
+Write-Host "===============================" -ForegroundColor Yellow
+Write-Host ""
+Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba."
+Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."
+Write-Host "Solo una persona puede recuperarlo: tu."
+Write-Host ""
+Write-Host "Donde comienzas tu busqueda?"
+Write-Host "1. La Biblioteca de los Sabios"
+Write-Host "2. El Bosque de las Sombras"
+$choice1 = Get-UserChoice "Elige 1 o 2"
+
+if ($choice1 -eq "1") { Biblioteca }
+if ($choice1 -eq "2") { Bosque }
+
+function Biblioteca {
+    Clear-Host
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco." -ForegroundColor Yellow
+    Write-Host "Una figura encapuchada te observa y susurra: No deberias estar aqui..." -ForegroundColor Yellow
+    Write-Host ""
+    Write-Host "Que haras?"
+    Write-Host "1. Enfrentarlo con tu espada"
+    Write-Host "2. Huir y buscar mas pistas"
+    $choice2 = Get-UserChoice "Elige 1 o 2"
+    
+    if ($choice2 -eq "1") { LuchaEncapuchado }
+    if ($choice2 -eq "2") { HuirBiblioteca }
+}
+
+function LuchaEncapuchado {
+    Clear-Host
+    Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rapido y te esquiva." -ForegroundColor Red
+    Write-Host "Lanza un hechizo, inmovilizandote. Antes de perder el conocimiento, escuchas:" -ForegroundColor Red
+    Write-Host "Has cometido un error..." -ForegroundColor Red
+    pause
+    Final1
+}
+
+function HuirBiblioteca {
+    Clear-Host
+    Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicacion exacta de la Torre del Eco." -ForegroundColor Green
+    Write-Host "Decides partir de inmediato." -ForegroundColor Green
+    pause
+    Torre
+}
+
+function Bosque {
+    Clear-Host
+    Write-Host "El bosque esta envuelto en niebla. Encuentras un circulo de piedras brillantes." -ForegroundColor DarkGreen
+    Write-Host "Una criatura sombria emerge de entre los arboles." -ForegroundColor DarkGreen
+    Write-Host ""
+    Write-Host "Que haras?"
+    Write-Host "1. Hablar con la criatura"
+    Write-Host "2. Esconderte y observar"
+    $choice3 = Get-UserChoice "Elige 1 o 2"
+    
+    if ($choice3 -eq "1") { HablarCriatura }
+    if ($choice3 -eq "2") { Esconderse }
+}
+
+function HablarCriatura {
+    Clear-Host
+    Write-Host "La criatura se presenta como un guardian del Cristal." -ForegroundColor Cyan
+    Write-Host "Te advierte que la Torre del Eco es una trampa mortal." -ForegroundColor Cyan
+    Write-Host ""
+    Write-Host "Le crees?"
+    Write-Host "1. Si, decides buscar otra pista"
+    Write-Host "2. No, continuas a la torre"
+    $choice4 = Read-Host "Elige 1 o 2"
+    
+    if ($choice4 -eq "1") { BuscarPista }
+    if ($choice4 -eq "2") { Torre }
+}
+
+function BuscarPista {
+    Clear-Host
+    Write-Host "Ignoras la Torre y sigues el consejo de la criatura." -ForegroundColor Green
+    Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba." -ForegroundColor Green
+    pause
+    Final3
+}
+
+function Esconderse {
+    Clear-Host
+    Write-Host "Observas en silencio y ves a la criatura abrir un portal." -ForegroundColor Gray
+    Write-Host "Sin dudar, te cuelas en el y apareces dentro de la Torre del Eco." -ForegroundColor Gray
+    pause
+    Torre
+}
+
+function Torre {
+    Clear-Host
+    Write-Host "La Torre del Eco es un lugar oscuro y en ruinas." -ForegroundColor White
+    Write-Host "Encuentras el Cristal del Alba, pero hay una trampa magica." -ForegroundColor White
+    Write-Host ""
+    Write-Host "Como intentas desactivarla?"
+    Write-Host "1. Con fuerza bruta"
+    Write-Host "2. Buscando un mecanismo oculto"
+    $choice5 = Get-UserChoice "Elige 1 o 2"
+    
+    if ($choice5 -eq "1") { FuerzaBruta }
+    if ($choice5 -eq "2") { Mecanismo }
+}
+
+function FuerzaBruta {
+    Clear-Host
+    Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestruccion." -ForegroundColor Red
+    Write-Host "Todo se vuelve blanco." -ForegroundColor Red
+    pause
+    Final2
+}
+
+function Mecanismo {
+    Clear-Host
+    Write-Host "Encuentras un patron en el suelo y lo activas con cuidado." -ForegroundColor Magenta
+    Write-Host "La trampa se desactiva y puedes tomar el Cristal." -ForegroundColor Magenta
+    Write-Host ""
+    Write-Host "Que haras ahora?"
+    Write-Host "1. Regresar a Eldoria"
+    Write-Host "2. Usar el poder del Cristal para ti mismo"
+    $choice6 = Get-UserChoice "Elige 1 o 2"
+    
+    if ($choice6 -eq "1") { Final3 }
+    if ($choice6 -eq "2") { Final4 }
+}
+
+function Final1 {
+    Clear-Host
+    Write-Host "FINAL: DESTINO SELLADO" -ForegroundColor Gray
+    Write-Host "Fuiste derrotado antes de conocer la verdad." -ForegroundColor Gray
+    Write-Host "El Cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad."
+    Pause
+    Exit
+}
+
+function Final2 {
+    Clear-Host
+    Write-Host "FINAL: EL FIN DEL REINO" -ForegroundColor Red
+    Write-Host "El hechizo destruyo la torre y contigo dentro." -ForegroundColor Red
+    Write-Host "Sin el Cristal del Alba, Eldoria colapsa en el caos."
+    Pause
+    Exit
+}
+
+function Final3 {
+    Clear-Host
+    Write-Host "FINAL: EL HEROE DE ELDORIA" -ForegroundColor Green
+    Write-Host "Regresas con el Cristal del Alba y restauras el equilibrio." -ForegroundColor Green
+    Write-Host "El reino celebra tu valentia y tu nombre sera recordado para siempre."
+    Pause
+    Exit
+}
+
+function Final4 {
+    Clear-Host
+    Write-Host "FINAL: EL NUEVO SENOR OSCURO" -ForegroundColor Magenta
+    Write-Host "Decides usar el Cristal para aumentar tu poder." -ForegroundColor Magenta
+    Write-Host "Te conviertes en un ser temido, gobernando con puno de hierro."
+    Pause
+    Exit
+}
