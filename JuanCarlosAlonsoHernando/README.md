@@ -1,7 +1,7 @@
 # Conversion de BATCH a PowerShell
 
 ## Objetivo
-Hay que convertir el script proporcionado (.bat) al formato compatible con PowerShell (.ps1). 
+Convertir el script proporcionado (.bat) al formato compatible con PowerShell (.ps1). 
 
 ### Cambios a realizar:
 
