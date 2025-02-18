@@ -1,33 +1,8 @@
-# Migración de Script de CMD a PowerShell
-
-## Descripción
-Este repositorio contiene un ejercicio práctico en el que los alumnos deben migrar un script escrito en Batch (CMD) a PowerShell, mejorando su tolerancia a errores y asegurándose de su correcto funcionamiento.
-
-## Objetivo
-El propósito de esta actividad es que los alumnos se familiaricen con la sintaxis de PowerShell, comprendan la diferencia con los scripts en CMD y aprendan a implementar técnicas de manejo de errores para hacer los scripts más robustos.
-
-## Instrucciones
-
-### 1. Descarga el script base
-Se proporciona un script en CMD que contiene variables definidas por el usuario pero que no maneja errores de manera eficiente.
-
-### 2. Migración a PowerShell
-- Convierte el script de CMD a PowerShell (.ps1).
-- Declara y utiliza correctamente las variables en PowerShell.
-- Mejora la tolerancia a errores, utilizando estructuras adecuadas como `Try-Catch`.
-
-### 3. Pruebas y depuración
-- Ejecuta el script para verificar que funciona correctamente en PowerShell.
-- Corrige cualquier problema que surja.
-
-### 4. Entrega en GitHub
-- Guarda tu script convertido en un archivo de texto (.txt), renombrándolo con el siguiente formato:
-  `nombreAlumnoCurso.txt` (Ejemplo: `juangarcia1DAM.txt`).
-- Súbelo a este repositorio en la carpeta correspondiente.
-- Incluye un archivo Markdown (`.md`) con un pequeño comentario, describiendo las mejoras realizadas en la tolerancia a errores.
-
-## Evaluación
-Se valorará la correcta migración del script, la implementación de mejoras en la gestión de errores y el uso adecuado de la sintaxis de PowerShell.
-
-¡Buena suerte y feliz codificación! 🚀
-
+# sistemas
+El objetivo de este trabajo era cambiar un script bash a powershell.
+Además de la sintaxis diferente de cada consola, el archivo inicial contaba con errores en su programación,
+por lo que fue necesario corregir estructuras de control (bucles para que si el usuario introducía una opción diferente a 1 o 2, el jugador volviera al inicio o al paso anterior). 
+También se comenta cada función y se cambia de color el fondo. 
+Al final se pide al jugador que presione enter para cerrar la pestaña. 
+Para pasar de script bash a powershell se consultan los cmdlets con comandos como get-help -detailed
+También he consultado en diferentes foros como StackOverflow y herramientas como Taskade.
