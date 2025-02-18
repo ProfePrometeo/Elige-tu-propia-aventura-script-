@@ -1,0 +1,263 @@
+#Para que funcione bien sin problemas de permisos de usuario, se debe poner la siguiente instrucción:
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+#Declaración de función para evitar errores:
+function Error {
+    Write-Host ""
+    Write-Host "Introduce una opcion valida o vendra la guardia a por ti!"
+    Write-Host ""
+    pause
+}
+
+#Declaración de funciones que encaminan nuestra aventura:
+function Inicio {
+    Clear-Host
+    Write-Host "=========================================================" -ForegroundColor yellow
+    Write-Host " _____ _      ______ _____ _____ _____ _____ _   _ _____  
+|  ___| |     |  _  \  ___/  ___|_   _|_   _| \ | |  _  | 
+| |__ | |     | | | | |__ \ `--.   | |   | | |  \| | | | | 
+|  __|| |     | | | |  __| `--. \  | |   | | | . `  | | | | 
+| |___| |____ | |/ /| |___/\__/ / | |  _| |_| |\  \ \_/ / 
+\____/\_____/ |___/ \____/\____/  \_/  \___/\_| \_/\___/  
+ _____ _____   _____ _    ______ ___________ _____  ___   
+|  _  \  ___| |  ___| |   |  _  \  _  | ___ \_   _|/ _ \  
+| | | | |__   | |__ | |   | | | | | | | |_/ / | | / /_\ \ 
+| | | |  __|  |  __|| |   | | | | | | |    /  | | |  _  | 
+| |/ /| |___  | |___| |___| |/ /\ \_/ / |\ \ _| |_| | | | 
+|___/ \____/  \____/\_____/___/  \___/\_| \_|\___/\_| |_/" -ForegroundColor yellow
+    Write-Host "=========================================================" -ForegroundColor yellow
+    Write-Host ""
+    Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba."
+    Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."
+    Write-Host "Solo una persona puede recuperarlo: tu."
+    Write-Host ""
+    Write-Host "Donde comienzas tu busqueda?"
+    Write-Host "1. La Biblioteca de los Sabios"
+    Write-Host "2. El Bosque de las Sombras"
+    $choice1 = Read-Host "Elige 1 o 2"
+    
+    if ($choice1 -eq 1) { Biblioteca }
+    elseif ($choice1 -eq 2) { Bosque }
+    else { 
+        Error
+        Inicio
+    }
+}
+
+function Biblioteca {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Yellow'
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco." -ForegroundColor White
+    Write-Host "Una figura encapuchada te observa y susurra: No deberias estar aqui..." -ForegroundColor White
+    Write-Host ""
+    Write-Host "Que haras?" -ForegroundColor White
+    Write-Host "1. Enfrentarlo con tu espada"
+    Write-Host "2. Huir y buscar mas pistas"
+    $choice2 = Read-Host "Elige 1 o 2"
+    
+    if ($choice2 -eq 1) { LuchaEncapuchado }
+    elseif ($choice2 -eq 2) { HuirBiblioteca }
+    else { 
+        Error 
+        Biblioteca
+    }
+}
+function LuchaEncapuchado {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Red'
+    Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rapido y te esquiva."
+    Write-Host "Lanza un hechizo, inmovilizandote. Antes de perder el conocimiento, escuchas:"
+    Write-Host "Has cometido un error..." -ForegroundColor White
+    Final1
+}
+function HuirBiblioteca {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Green'
+    Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicacion exacta de la Torre del Eco."
+    Write-Host "Decides partir de inmediato." -ForegroundColor White
+    Torre
+}
+function Bosque {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Green'
+    Write-Host "El bosque esta envuelto en niebla. Encuentras un circulo de piedras brillantes." -ForegroundColor White
+    Write-Host "Una criatura sombria emerge de entre los arboles." -ForegroundColor White
+    Write-Host ""
+    Write-Host "Que haras?" -ForegroundColor White
+    Write-Host "1. Hablar con la criatura"
+    Write-Host "2. Esconderte y observar"
+    $choice3 = Read-Host "Elige 1 o 2"
+    
+    if ($choice3 -eq 1) { HablarCriatura }
+    elseif ($choice3 -eq 2) { Esconderse }
+    else { 
+        Error 
+        Bosque
+    }
+}
+function HablarCriatura {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Blue'
+    Write-Host "La criatura se presenta como un guardian del Cristal." -ForegroundColor White
+    Write-Host "Te advierte que la Torre del Eco es una trampa mortal." -ForegroundColor White
+    Write-Host ""
+    Write-Host "Le crees?" -ForegroundColor White
+    Write-Host "1. Si, decides buscar otra pista"
+    Write-Host "2. No, continuas a la torre"
+    $choice4 = Read-Host "Elige 1 o 2"
+    
+    if ($choice4 -eq 1) { BuscarPista }
+    elseif ($choice4 -eq 2) { Torre }
+    else { 
+        Error 
+        HablarCriatura
+    }
+}
+function Esconderse {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Gray'
+    Write-Host "Observas en silencio y ves a la criatura abrir un portal."
+    Write-Host "Sin dudar, te cuelas en el y apareces dentro de la Torre del Eco." -ForegroundColor White
+    Torre
+}
+function Torre {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Cyan'
+    Write-Host "La Torre del Eco es un lugar oscuro y en ruinas." -ForegroundColor White
+    Write-Host "Encuentras el Cristal del Alba, pero hay una trampa magica." -ForegroundColor White
+    Write-Host ""
+    Write-Host "Como intentas desactivarla?" -ForegroundColor White
+    Write-Host "1. Con fuerza bruta"
+    Write-Host "2. Buscando un mecanismo oculto"
+    $choice5 = Read-Host "Elige 1 o 2"
+    
+    if ($choice5 -eq 1) { FuerzaBruta }
+    elseif ($choice5 -eq 2) { Mecanismo }
+    else { 
+        Error 
+        Torre
+    }
+}
+function FuerzaBruta {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Red'
+    Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestruccion." -ForegroundColor White
+    Write-Host "Todo se vuelve blanco."
+    Final2
+}
+function Mecanismo {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'Magenta'
+    Write-Host "Encuentras un patron en el suelo y lo activas con cuidado." -ForegroundColor White
+    Write-Host "La trampa se desactiva y puedes tomar el Cristal." -ForegroundColor White
+    Write-Host ""
+    Write-Host "Que haras ahora?" -ForegroundColor White
+    Write-Host "1. Regresar a Eldoria"
+    Write-Host "2. Usar el poder del Cristal para ti mismo"
+    $choice6 = Read-Host "Elige 1 o 2"
+    
+    if ($choice6 -eq 1) { Final3 }
+    elseif ($choice6 -eq 2) { Final4 }
+    else { 
+        Error 
+        Mecanismo
+    }
+}
+function BuscarPista {
+    Clear-Host
+    $Host.UI.RawUI.ForegroundColor = 'DarkGreen'
+    Write-Host "Ignoras la Torre y sigues el consejo de la criatura."
+    Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba." -ForegroundColor White
+    Final3
+}
+function Final1 {
+    Clear-Host
+    Write-Host "
+ _____  ______  _____ _______ _____ _   _  ____     
+|  __ \|  ____|/ ____|__   __|_   _| \ | |/ __ \    
+| |  | | |__  | (___    | |    | | |  \| | |  | |   
+| |  | |  __|  \___ \   | |    | | | . `  | |  | |   
+| |__| | |____ ____) |  | |   _| |_| |\  | |__| |   
+|_____/|______|_____/   |_|  |_____|_| \_|\____/    
+ _____ ______ _      _               _____   ____  
+/ ____|  ____| |    | |        /\   |  __ \ / __ \ 
+| (___| |__  | |    | |       /  \  | |  | | |  | |
+\___ \|  __| | |    | |      / /\ \ | |  | | |  | |
+____) | |____| |____| |____ / ____ \| |__| | |__| |
+|____/|______|______|______/_/    \_\_____/ \____/ " -ForegroundColor Red
+    Write-Host "Fuiste derrotado antes de conocer la verdad." -ForegroundColor White
+    pause
+    exit
+}
+function Final2 {
+    Clear-Host
+    Write-Host "
+ ______ _        ______ _____ _   _                      
+|  ____| |      |  ____|_   _| \ | |                     
+| |__  | |      | |__    | | |  \| |                     
+|  __| | |      |  __|   | | | . ` |                     
+| |____| |____  | |     _| |_| |\  |                     
+|______|______| |_|    |_____|_| \_|                     
+ _____  ______ _        _____  ______ _____ _   _  ____  
+|  __ \|  ____| |      |  __ \|  ____|_   _| \ | |/ __ \ 
+| |  | | |__  | |      | |__) | |__    | | |  \| | |  | |
+| |  | |  __| | |      |  _  /|  __|   | | | . `  | |  | |
+| |__| | |____| |____  | | \ \| |____ _| |_| |\  | |__| |
+|_____/|______|______| |_|  \_\______|_____|_| \_|\____/ " -ForegroundColor Magenta
+    Write-Host "El hechizo destruyo la torre y contigo dentro." -ForegroundColor White
+    pause
+    exit
+}
+function Final3 {
+    Clear-Host
+    Write-Host "
+ ______ _        _    _ ______ _____   ____  ______ 
+|  ____| |      | |  | |  ____|  __ \ / __ \|  ____|
+| |__  | |      | |__| | |__  | |__) | |  | | |__   
+|  __| | |      |  __  |  __| |  _  /| |  | |  __|  
+| |____| |____  | |  | | |____| | \ \| |__| | |____ 
+|______|______| |_|  |_|______|_|  \_\\____/|______|
+                 _____  ______                                      
+                |  __ \|  ____|                                     
+                | |  | | |__                                        
+                | |  | |  __|                                       
+                | |__| | |____                                      
+                |_____/|______|                                     
+ ______ _      _____   ____  _____  _____           
+|  ____| |    |  __ \ / __ \|  __ \|_   _|   /\     
+| |__  | |    | |  | | |  | | |__) | | |    /  \    
+|  __| | |    | |  | | |  | |  _  /  | |   / /\ \   
+| |____| |____| |__| | |__| | | \ \ _| |_ / ____ \  
+|______|______|_____/ \____/|_|  \_\_____/_/    \_\" -ForegroundColor Green
+    Write-Host "Regresas con el Cristal del Alba y restauras el equilibrio." -ForegroundColor White
+    pause
+    exit
+}
+function Final4 {
+    Clear-Host
+    Write-Host "
+ ______ _        _   _ _    _ ________      ______  
+|  ____| |      | \ | | |  | |  ____\ \    / / __ \ 
+| |__  | |      |  \| | |  | | |__   \ \  / / |  | |
+|  __| | |      | . `  | |  | |  __|   \ \/ /| |  | |
+| |____| |____  | |\  | |__| | |____   \  / | |__| |
+|______|______| |_| \_|\____/|______|   \/   \____/ 
+         _____ ______  /\/|  ____  _____                   
+        / ____|  ____||/\/_ / __ \|  __ \                  
+       | (___ | |__  | \ | | |  | | |__) |                 
+        \___ \|  __| |  \| | |  | |  _  /                  
+        ____) | |____| |\  | |__| | | \ \                  
+       |_____/|______|_| \_|\____/|_|  \_\                 
+      ____   _____  _____ _    _ _____   ____           
+     / __ \ / ____|/ ____| |  | |  __ \ / __ \          
+    | |  | | (___ | |    | |  | | |__) | |  | |         
+    | |  | |\___ \| |    | |  | |  _  /| |  | |         
+    | |__| |____) | |____| |__| | | \ \| |__| |         
+     \____/|_____/ \_____|\____/|_|  \_\\____/ " -ForegroundColor Yellow
+    Write-Host "Decides usar el Cristal para aumentar tu poder." -ForegroundColor White
+    pause
+    exit
+}
+
+#Comienza el script:
+Inicio
