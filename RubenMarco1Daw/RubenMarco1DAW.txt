@@ -1,0 +1,245 @@
+# Configura PowerShell para detenerse inmediatamente si ocurre un error en el script
+$ErrorActionPreference = "Stop"
+
+# función 'Mostrar-Opcion' se encarga de mostrar las opciones al usuario.
+function Mostrar-Opcion {
+    param (
+        [string]$mensaje,  # El mensaje que aparecerá al principio
+        [string]$opcion1,  # El texto para la primera opción
+        [string]$opcion2   # El texto para la segunda opción
+    )
+    Write-Host $mensaje        -ForegroundColor Cyan    # Muestra el mensaje recibido 
+    Write-Host "1. $opcion1"   -ForegroundColor Cyan    # Muestra la primera opción
+    Write-Host "2. $opcion2"   -ForegroundColor Cyan    # Muestra la segunda opción
+}
+
+# Función 'Obtener-Eleccion' se encargará de recibir la elección del jugador.
+function Obtener-Eleccion {
+    param (
+        [string]$mensaje # Mensaje que se mostrará antes de pedir la elección
+    )
+
+    $eleccion = ""   # Inicializamos la variable de elección
+
+    # Bucle para asegurar que la elección sea válida
+    while ($eleccion -notin @("1", "2")) {
+
+        Write-Host $mensaje -ForegroundColor Yellow
+        $eleccion = Read-Host # Muestra el mensaje y espera que el jugador ingrese una opción
+
+        if ($eleccion -notin @("1", "2")) {
+            Write-Host "Opción no válida. Por favor, elige 1 o 2." -ForegroundColor Yellow  # Si no es una opción válida, muestra el mensaje de error
+        }
+    }
+
+    return $eleccion  # Devuelve la elección ingresada por el jugador
+}
+
+# Definimos la función 'Inicio', que muestra el título y las opciones iniciales del juego.
+function Inicio {
+    cls  # Limpia la pantalla antes de mostrar el contenido
+    Write-Host "==============================="
+    Write-Host "     EL DESTINO DE ELDORIA     " 
+    Write-Host "==============================="
+    Write-Host ""   # Deja un espacio en blanco
+
+    Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba." 
+    Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."
+    Write-Host "Solo una persona puede recuperarlo: tú."
+    Write-Host ""
+
+    # Llama a la función Mostrar-Opcion: (MENSAJE/OPCION/OPCION)
+    Mostrar-Opcion "Donde comienzas tu busqueda" "La Biblioteca de los Sabios" "El Bosque de las Sombras"
+    
+    # Llama a la función 'Obtener-Eleccion': (MENSAJE)
+    $choice1 = Obtener-Eleccion "Elige 1 o 2"
+
+    # Verifica la elección del jugador
+    if ($choice1 -eq "1") {
+        Biblioteca  # Si el jugador elige "1", se ejecuta la función Biblioteca
+    }
+    elseif ($choice1 -eq "2") {
+        Bosque  # Si el jugador elige "2", se ejecuta la función Bosque
+    }
+    else {
+        Write-Host "Opción no válida. Por favor, elige 1 o 2."  # Si el jugador no pone "1" o "2", mensaje de error
+    }
+}
+
+# Función para la Biblioteca
+function Biblioteca {
+    cls
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco."
+    Write-Host "Una figura encapuchada te observa y susurra: No deberías estar aquí..."
+    Write-Host ""
+
+    Mostrar-Opcion "Que harás" "Enfrentarlo con tu espada" "Huir y buscar mas pistas"
+    $choice2 = Obtener-Eleccion "Elige 1 o 2"
+
+    if ($choice2 -eq "1") {
+        LuchaEncapuchado  # Si el jugador elige "1", inicia la lucha con el encapuchado
+    }
+    elseif ($choice2 -eq "2") {
+        HuirBiblioteca  # Si el jugador elige "2", escapa de la biblioteca
+    }
+}
+
+# Lucha con el Encapuchado
+function LuchaEncapuchado {
+    cls
+    Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rápido y te esquiva."
+    Write-Host "Lanza un hechizo, inmovilizándote. Antes de perder el conocimiento, escuchas:"
+    Write-Host "Has cometido un error..."
+    Final1  # Dirige al final numero 1
+}
+
+# Escapar de la biblioteca
+function HuirBiblioteca {
+    cls
+    Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicación exacta de la Torre del Eco."
+    Write-Host "Decides partir de inmediato."
+    Torre  # Dirige a Torre
+}
+
+# Función para el Bosque
+function Bosque {
+    cls
+    Write-Host "El bosque está envuelto en niebla. Encuentras un círculo de piedras brillantes."
+    Write-Host "Una criatura sombría emerge de entre los árboles."
+    Write-Host ""
+
+    Mostrar-Opcion "Que harás" "Hablar con la criatura" "Esconderte y observar"
+    $choice3 = Obtener-Eleccion "Elige 1 o 2"
+
+    if ($choice3 -eq "1") { 
+        HablarCriatura  # Si el jugador elige "1", interactúa con la criatura
+    }
+    elseif ($choice3 -eq "2") {
+        Esconderse  # Si el jugador elige "2", se esconde
+    }
+}
+
+# Hablar con la criatura
+function HablarCriatura {
+    cls
+    Write-Host "La criatura se presenta como un guardián del Cristal."
+    Write-Host "Te advierte que la Torre del Eco es una trampa mortal."
+    Write-Host ""
+
+    Mostrar-Opcion "Le crees" "Si, decides buscar otra pista" "No, continuas a la torre"
+    $choice4 = Obtener-Eleccion "Elige 1 o 2"
+
+    if ($choice4 -eq "1") {
+        BuscarPista  # Si el jugador elige "1", busca otra pista
+    }
+    elseif ($choice4 -eq "2") {
+        Torre  # Si el jugador elige "2", va directamente a la Torre
+    }
+}
+
+# Esconderse
+function Esconderse {
+    cls
+    Write-Host "Observas en silencio y ves a la criatura abrir un portal."
+    Write-Host "Sin dudar, te cuelas en él y apareces dentro de la Torre del Eco."
+    pause
+    Torre  # Dirige a Torre
+}
+
+# Torre
+function Torre {
+    cls
+    Write-Host "La Torre del Eco es un lugar oscuro y en ruinas."
+    Write-Host "Encuentras el Cristal del Alba, pero hay una trampa mágica."
+    Write-Host ""
+    Mostrar-Opcion "Como intentas desactivarla" "Con fuerza bruta" "Buscando un mecanismo oculto"
+    $choice5 = Obtener-Eleccion "Elige 1 o 2"
+
+    if ($choice5 -eq "1") {
+        FuerzaBruta  # Si el jugador elige "1", intenta desactivar la trampa con fuerza
+    }
+    elseif ($choice5 -eq "2") {
+        Mecanismo  # Si el jugador elige "2", busca un mecanismo oculto
+    }
+}
+
+# Fuerza bruta
+function FuerzaBruta {
+    cls
+    Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestrucción."
+    Write-Host "Todo se vuelve blanco."
+    Final2  # Dirige al final numero 2
+}
+
+# Mecanismo
+function Mecanismo {
+    cls
+    Write-Host "Encuentras un patrón en el suelo y lo activas con cuidado."
+    Write-Host "La trampa se desactiva y puedes tomar el Cristal."
+    Write-Host ""
+    Mostrar-Opcion "Que harás ahora" "Regresar a Eldoria" "Usar el poder del Cristal para ti mismo"
+    $choice6 = Obtener-Eleccion "Elige 1 o 2"
+
+    if ($choice6 -eq "1") {
+        Final3  # Si el jugador elige "1", regresa a Eldoria
+    }
+    elseif ($choice6 -eq "2") {
+        Final4  # Si el jugador elige "2", usa el poder del Cristal para él mismo
+    }
+}
+
+# Buscar otra pista
+function BuscarPista { 
+    cls
+    Write-Host "Ignoras la Torre y sigues el consejo de la criatura."
+    Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba."
+    Final3  # Dirige al final 3
+}
+
+# Finales
+function Final1 {
+    cls
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "          FINAL: DESTINO SELLADO      " -ForegroundColor Yellow
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "Fuiste derrotado antes de conocer la verdad."-ForegroundColor Yellow
+    Write-Host "El Cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad."-ForegroundColor Yellow
+    Pause  # Detiene la ejecución y espera a que el usuario presione una tecla
+    Exit   # Finaliza la ejecución del script y cierra la consola
+}
+
+function Final2 {
+    cls
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "      FINAL: EL FIN DEL REINO        "-ForegroundColor Yellow
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "El hechizo destruyó la torre y contigo dentro."-ForegroundColor Yellow
+    Write-Host "Sin el Cristal del Alba, Eldoria colapsa en el caos."-ForegroundColor Yellow
+    Pause
+    Exit
+}
+
+function Final3 {
+    cls
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "       FINAL: EL HEROE DE ELDORIA     "-ForegroundColor Yellow
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "Regresas con el Cristal del Alba y restauras el equilibrio."-ForegroundColor Yellow
+    Write-Host "El reino celebra tu valentía y tu nombre será recordado para siempre."-ForegroundColor Yellow
+    Pause
+    Exit
+}
+
+function Final4 {
+    cls
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "     FINAL: EL NUEVO SEÑOR OSCURO    "-ForegroundColor Yellow
+    Write-Host "======================================="-ForegroundColor Yellow
+    Write-Host "Decides usar el Cristal para aumentar tu poder."-ForegroundColor Yellow
+    Write-Host "Te conviertes en un ser temido, gobernando con puño de hierro."-ForegroundColor Yellow
+    Pause
+    Exit
+}
+
+# Inicia el juego
+Inicio
