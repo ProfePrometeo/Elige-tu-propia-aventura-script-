@@ -1,0 +1,305 @@
+function Final1 {
+    
+    Clear-Host
+    [System.Console]::ForegroundColor = 'Gray'
+    Write-Host "`n==================================="
+    Write-Host          FINAL: DESTINO SELLADO
+    Write-Host ======================================
+    Write-Host Fuiste derrotado antes de conocer la verdad.  
+    Write-Host El Cristal del Alba permanece perdido, y Eldoria se sume en la oscuridad.
+    pause
+    exit
+}
+
+function Final2 {
+    
+    Clear-Host
+    [System.Console]::ForegroundColor = 'Red'
+    Write-Host "`n==================================="
+    Write-Host      FINAL: EL FIN DEL REINO
+    Write-Host ======================================
+    Write-Host El hechizo destruyo la torre y contigo dentro.  
+    Write-Host Sin el Cristal del Alba, Eldoria colapsa en el caos.
+    pause
+    exit
+}
+
+function Regresar {
+    
+    Clear-Host
+    [System.Console]::ForegroundColor = 'Yellow'
+    Write-Host "`n==================================="
+    Write-Host       FINAL: EL HEROE DE ELDORIA
+    Write-Host ======================================
+    Write-Host Regresas con el Cristal del Alba y restauras el equilibrio.  
+    Write-Host El reino celebra tu valentia y tu nombre sera recordado para siempre.
+    pause
+    exit
+}
+
+function UsarCristal {
+    
+    Clear-Host
+    [System.Console]::ForegroundColor = 'Magenta'
+    Write-Host "`n======================================"
+    Write-Host     FINAL: EL NUEVO SENOR OSCURO
+    Write-Host ======================================
+    Write-Host Decides usar el Cristal para aumentar tu poder.  
+    Write-Host Te conviertes en un ser temido, gobernando con puno de hierro.
+    pause
+    exit
+}
+
+
+function FuerzaBruta {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'Red'
+        Write-Host "`nIntentas romper la trampa con tu espada, pero activa un hechizo de autodestruccion."
+        Write-Host Todo se vuelve blanco.
+        Write-Host "`nIntroduce Enter para continuar"
+        
+        $tecla = [System.Console]::ReadKey().Key
+        
+        if($tecla -eq 'Enter') {
+            Final2
+        } else {
+            Write-Host "`nNo ha introducido la tecla indicada.`n"
+        }
+    } while ($tecla -ne 'Enter');
+}
+
+function Mecanismo {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'White'
+        Write-Host "`nEncuentras un patron en el suelo y lo activas con cuidado."
+        Write-Host "La trampa se desactiva y puedes tomar el Cristal.`n"
+        Write-Host Que haras ahora
+        Write-Host 1. Regresar a Eldoria
+        Write-Host 2. Usar el poder del Cristal para ti mismo
+        Write-Host "Elige Regresar o UsarCristal:`n" 
+
+        $choice = [System.Console]::ReadLine();
+
+        if($choice -eq 'FuerzaBruta') {
+            FuerzaBruta
+        } elseif ($choice -eq 'Mecanismo') {
+            Mecanismo
+        } else {
+            Write-Host "`nNo ha introducido una opcion valida.`n"
+        }
+    } while (($choice -ne 'FuerzaBruta') -and ($choice -ne 'Mecanismo'));
+}
+
+function BuscarPista {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'Green'
+        Write-Host "`nIgnoras la Torre y sigues el consejo de la criatura."  
+        Write-Host Descubres que el verdadero Cristal estaba oculto en el Templo del Alba.
+        Write-Host "`nIntroduce Enter para continuar"
+        
+        $tecla = [System.Console]::ReadKey().Key
+        
+        if($tecla -eq 'Enter') {
+            Regresar
+        } else {
+            Write-Host "`nNo ha introducido la tecla indicada.`n"
+        }
+    } while ($tecla -ne 'Enter');
+}
+
+function Torre {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'White'
+        Write-Host "`nLa Torre del Eco es un lugar oscuro y en ruinas."  
+        Write-Host "Encuentras el Cristal del Alba, pero hay una trampa magica.`n"
+        Write-Host Como intentas desactivarla
+        Write-Host 1. Con fuerza bruta
+        Write-Host 2. Buscando un mecanismo oculto
+        Write-Host "Elige FuerzaBruta o Mecanismo:`n"
+
+        $choice = [System.Console]::ReadLine();
+
+        if($choice -eq 'FuerzaBruta') {
+            FuerzaBruta
+        } elseif ($choice -eq 'Mecanismo') {
+            Mecanismo
+        } else {
+            Write-Host "`nNo ha introducido una opcion valida.`n"
+        }
+    } while (($choice -ne 'FuerzaBruta') -and ($choice -ne 'Mecanismo'));
+}
+
+function HablarCriatura {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'Cyan'
+        Write-Host "`nLa criatura se presenta como un guardian del Cristal."  
+        Write-Host "Te advierte que la Torre del Eco es una trampa mortal.`n"
+        Write-Host Le crees
+        Write-Host 1. Si, decides buscar otra pista
+        Write-Host 2. No, continuas a la torre
+        Write-Host "Elige BuscarPista o Torre:`n"
+
+        $choice = [System.Console]::ReadLine();
+
+        if($choice -eq 'BuscarPista') {
+            BuscarPista
+        } elseif ($choice -eq 'Torre') {
+            Torre
+        } else {
+            Write-Host "`nNo ha introducido una opcion valida.`n"
+        }
+    } while (($choice -ne 'BuscarPista') -and ($choice -ne 'Torre'));
+}
+
+function Esconderse {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'Gray'
+        Write-Host "`nObservas en silencio y ves a la criatura abrir un portal."  
+        Write-Host Sin dudar, te cuelas en el y apareces dentro de la Torre del Eco.
+        Write-Host "`nIntroduce Enter para continuar"
+        
+        $tecla = [System.Console]::ReadKey().Key
+        
+        if($tecla -eq 'Enter') {
+            Torre
+        } else {
+            Write-Host "`nNo ha introducido la tecla indicada.`n"
+        }
+    } while ($tecla -ne 'Enter');
+}
+
+
+function EnfrentarEncapuchado {
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'Red'
+        Write-Host "`nDesenvainas tu espada y atacas, pero el encapuchado es rapido y te esquiva."
+        Write-Host Lanza un hechizo, inmovilizandote. Antes de perder el conocimiento, escuchas:  
+        Write-Host Has cometido un error...
+        Write-Host "`nIntroduce Enter para continuar"
+        
+        $tecla = [System.Console]::ReadKey().Key
+        
+        if($tecla -eq 'Enter') {
+            Final1
+        } else {
+            Write-Host "`nNo ha introducido la tecla indicada.`n"
+        }
+    } while ($tecla -ne 'Enter');
+}
+
+function HuirBiblioteca {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'Green'
+        Write-Host "`nEscapas de la biblioteca y encuentras un mapa con la ubicacion exacta de la Torre del Eco."  
+        Write-Host Decides partir de inmediato.
+        Write-Host "`nIntroduce Enter para continuar"
+        
+        $tecla = [System.Console]::ReadKey().Key
+        
+        if($tecla -eq 'Enter') {
+            Torre
+        } else {
+            Write-Host "`nNo ha introducido la tecla indicada.`n"
+        }
+    } while ($tecla -ne 'Enter');
+}
+
+function Biblioteca {
+    
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'DarkYellow'
+        Write-Host "`nEn la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco."  
+        Write-Host "Una figura encapuchada te observa y susurra: No deberias estar aqui...`n"
+        Write-Host Que haras
+        Write-Host 1. Enfrentarlo con tu espada
+        Write-Host 2. Huir y buscar mas pistas
+        Write-Host "`nElige EnfrentarEncapuchado o HuirBiblioteca:"
+
+        $choice = [System.Console]::ReadLine();
+
+        if($choice -eq 'EnfrentarEncapuchado') {
+            EnfrentarEncapuchado
+        } elseif ($choice -eq 'HuirBiblioteca') {
+            HuirBiblioteca
+        } else {
+            Write-Host "`nNo ha introducido una opcion valida.`n"
+        }
+    }while (($choice -ne 'EnfrentarEncapuchado') -and ($choice -ne 'HuirBiblioteca'));
+}
+
+function Bosque {
+    
+    do {
+        Clear-Host
+        [System.Console]::ForegroundColor = 'DarkGreen'
+        Write-Host "`nEl bosque esta envuelto en niebla. Encuentras un circulo de piedras brillantes."  
+        Write-Host "Una criatura sombria emerge de entre los arboles.`n"
+        Write-Host Que haras
+        Write-Host 1. Hablar con la criatura
+        Write-Host 2. Esconderte y observar
+        Write-Host "`nElige HablarCriatura o Esconderse: " 
+
+        $choice = [System.Console]::ReadLine();
+
+        if($choice -eq 'HablarCriatura') {
+            HablarCriatura
+        } elseif ($choice -eq 'Esconderse') {
+            Esconderse
+        } else {
+            Write-Host "`nNo ha introducido una opcion valida.`n"
+        }
+    } while (($choice -ne 'HablarCriatura') -and ($choice -ne 'Esconderse'));
+}
+
+Set-ConsoleTitle -Title "El Destino de Eldoria"
+
+
+do {
+    Clear-Host
+    [System.Console]::ForegroundColor = 'Yellow'
+    Write-Host ================================
+    Write-Host      EL DESTINO DE ELDORIA
+    Write-Host "================================`n"
+    Write-Host El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba.  
+    Write-Host Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos.  
+    Write-Host "Solo una persona puede recuperarlo: tu.`n"  
+    Write-Host Donde comienzas tu busqueda
+    Write-Host 1. La Biblioteca de los Sabios
+    Write-Host 2. El Bosque de las Sombras
+    Write-Host "`nElige Biblioteca o Bosque: " 
+
+    $choice = [System.Console]::ReadLine();
+
+    if($choice -eq 'Biblioteca') {
+        Biblioteca
+    } elseif ($choice -eq 'Bosque') {
+        Bosque
+    } else {
+        Write-Host "`nNo ha introducido una opcion valida.`n"
+    }
+} while (($choice -ne 'Biblioteca') -and ($choice -ne 'Bosque'));
