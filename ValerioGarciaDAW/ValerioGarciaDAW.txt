@@ -1,0 +1,82 @@
+# El Destino de Eldoria - Versión PowerShell Extendida
+Clear-Host
+$host.UI.RawUI.BackgroundColor = 'DarkCyan'
+Write-Host "╔════════════════════════════╗" -ForegroundColor Cyan
+Write-Host "║      EL DESTINO DE ELDORIA   ║" -ForegroundColor Cyan
+Write-Host "╚════════════════════════════╝" -ForegroundColor Cyan
+Write-Host ""
+Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba."
+Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos."
+Write-Host "Solo una persona puede recuperarlo: tú." -ForegroundColor Yellow
+Write-Host ""
+
+function Obtener-Opcion {
+    param (
+        [string]$mensaje,
+        [string[]]$opciones
+    )
+    do {
+        $opcion = Read-Host "$mensaje"
+        if ($opciones -contains $opcion) {
+            return $opcion
+        } else {
+            Write-Host "Opción no válida. Inténtalo de nuevo." -ForegroundColor Red
+        }
+    } while ($true)
+}
+
+$choice1 = Obtener-Opcion "¿Dónde comienzas tu búsqueda? (1. Biblioteca de los Sabios / 2. Bosque de las Sombras)" @("1", "2")
+
+if ($choice1 -eq "1") {
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco."
+    Write-Host "Una figura encapuchada te observa y susurra: 'No deberías estar aquí...'"
+    $choice2 = Obtener-Opcion "¿Qué harás? (1. Enfrentarlo con tu espada / 2. Huir y buscar más pistas)" @("1", "2")
+    if ($choice2 -eq "1") {
+        Write-Host "Desenvainas tu espada, pero el encapuchado es rápido y esquiva cada golpe."
+        Write-Host "'Has cometido un error...', murmura antes de lanzar un hechizo."
+        Write-Host "FINAL: DESTINO SELLADO"
+        exit
+    } else {
+        Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicación exacta de la Torre del Eco."
+    }
+} else {
+    Write-Host "El bosque está envuelto en niebla. Encuentras un círculo de piedras brillantes."
+    Write-Host "Una criatura sombría emerge de entre los árboles."
+    $choice3 = Obtener-Opcion "¿Qué harás? (1. Hablar con la criatura / 2. Esconderte y observar)" @("1", "2")
+    if ($choice3 -eq "1") {
+        Write-Host "La criatura se presenta como un guardián del Cristal."
+        Write-Host "Te advierte que la Torre del Eco es una trampa mortal."
+        $choice4 = Obtener-Opcion "¿Le crees? (1. Sí, decides buscar otra pista / 2. No, continúas a la torre)" @("1", "2")
+        if ($choice4 -eq "1") {
+            Write-Host "Ignoras la Torre y sigues el consejo de la criatura."
+            Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba."
+            Write-Host "FINAL: EL HÉROE DE ELDORIA"
+            exit
+        }
+    } else {
+        Write-Host "Observas en silencio y ves a la criatura abrir un portal. Te cuelas en él y apareces dentro de la Torre del Eco."
+    }
+}
+
+Write-Host "La Torre del Eco es un lugar oscuro y en ruinas. Encuentras el Cristal del Alba, pero hay una trampa mágica."
+Write-Host "El aire vibra con energía arcana, y sientes una presencia observándote."
+$choice5 = Obtener-Opcion "¿Cómo intentas desactivarla? (1. Con fuerza bruta / 2. Buscando un mecanismo oculto)" @("1", "2")
+if ($choice5 -eq "1") {
+    Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestrucción."
+    Write-Host "Un brillo cegador inunda la habitación y todo se desvanece."
+    Write-Host "FINAL: EL FIN DEL REINO"
+    exit
+} else {
+    Write-Host "Encuentras un patrón en el suelo y lo activas con cuidado. La trampa se desactiva y puedes tomar el Cristal."
+    Write-Host "Mientras lo sostienes, escuchas un susurro: 'El poder siempre tiene un precio...'."
+    $choice6 = Obtener-Opcion "¿Qué harás ahora? (1. Regresar a Eldoria / 2. Usar el poder del Cristal para ti mismo)" @("1", "2")
+    if ($choice6 -eq "1") {
+        Write-Host "Regresas con el Cristal del Alba y restauras el equilibrio."
+        Write-Host "El pueblo te aclama como su salvador y tu nombre será recordado por generaciones."
+        Write-Host "FINAL: EL HÉROE DE ELDORIA"
+    } else {
+        Write-Host "Decides usar el Cristal para aumentar tu poder."
+        Write-Host "La energía del Cristal fluye a través de ti y sientes cómo el mundo se arrodilla ante tu voluntad."
+        Write-Host "FINAL: EL NUEVO SEÑOR OSCURO"
+    }
+}
