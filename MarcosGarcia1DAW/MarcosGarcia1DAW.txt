@@ -1,0 +1,194 @@
+Clear-Host
+Write-Host "================================" -ForegroundColor Yellow
+Write-Host "     EL DESTINO DE ELDORIA" -ForegroundColor Yellow
+Write-Host "================================`n"
+Write-Host "El reino de Eldoria ha vivido en paz durante siglos, protegido por el Cristal del Alba." -ForegroundColor White
+Write-Host "Sin embargo, una noche, el cristal desaparece, sumiendo al reino en el caos." -ForegroundColor White
+Write-Host "Solo una persona puede recuperarlo: tu.`n" -ForegroundColor White
+
+function ElegirDestino {
+    $host.UI.RawUI.ForegroundColor = "Cyan"
+    Write-Host "Donde comienzas tu busqueda"
+    Write-Host "1. La Biblioteca de los Sabios"
+    Write-Host "2. El Bosque de las Sombras"
+    
+    do {
+        $choice = Read-Host "Elige 1 o 2"
+    } until ($choice -match "^[12]$")
+    
+    if ($choice -eq "1") { Biblioteca }
+    else { Bosque }
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Biblioteca {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "Magenta"
+    Write-Host "En la biblioteca, encuentras un pergamino sobre el Cristal del Alba y la Torre del Eco."
+    Write-Host "Una figura encapuchada te observa y susurra: No deberias estar aqui..."
+    Write-Host "Que haras?"
+    Write-Host "1. Enfrentarlo con tu espada"
+    Write-Host "2. Huir y buscar mas pistas"
+    
+    do {
+        $choice = Read-Host "Elige 1 o 2"
+    } until ($choice -match "^[12]$")
+    
+    if ($choice -eq "1") { LuchaEncapuchado }
+    else { HuirBiblioteca }
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function LuchaEncapuchado {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "Red"
+    Write-Host "Desenvainas tu espada y atacas, pero el encapuchado es rapido y te esquiva."
+    Write-Host "Lanza un hechizo, inmovilizandote. Antes de perder el conocimiento, escuchas:"
+    Write-Host "'Has cometido un error...'"
+    Final1
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function HuirBiblioteca {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "Magenta"
+    Write-Host "Escapas de la biblioteca y encuentras un mapa con la ubicacion exacta de la Torre del Eco."
+    Write-Host "Decides partir de inmediato."
+    Torre
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Bosque {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "DarkGreen"
+    Write-Host "El bosque esta envuelto en niebla. Encuentras un circulo de piedras brillantes."
+    Write-Host "Una criatura sombria emerge de entre los arboles."
+    Write-Host "Que haras?"
+    Write-Host "1. Hablar con la criatura"
+    Write-Host "2. Esconderte y observar"
+    
+    do {
+        $choice = Read-Host "Elige 1 o 2"
+    } until ($choice -match "^[12]$")
+    
+    if ($choice -eq "1") { HablarCriatura }
+    else { Esconderse }
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function HablarCriatura {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "DarkCyan"
+    Write-Host "La criatura se presenta como un guardian del Cristal."
+    Write-Host "Te advierte que la Torre del Eco es una trampa mortal."
+    Write-Host "Le crees?"
+    Write-Host "1. Si, decides buscar otra pista"
+    Write-Host "2. No, continuas a la torre"
+    
+    do {
+        $choice = Read-Host "Elige 1 o 2"
+    } until ($choice -match "^[12]$")
+    
+    if ($choice -eq "1") { BuscarPista }
+    else { Torre }
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Esconderse {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "DarkGray"
+    Write-Host "Observas en silencio y ves a la criatura abrir un portal."
+    Write-Host "Sin dudar, te cuelas en el y apareces dentro de la Torre del Eco."
+    Torre
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Torre {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "Yellow"
+    Write-Host "La Torre del Eco es un lugar oscuro y en ruinas."
+    Write-Host "Encuentras el Cristal del Alba, pero hay una trampa magica."
+    Write-Host "Como intentas desactivarla?"
+    Write-Host "1. Con fuerza bruta"
+    Write-Host "2. Buscando un mecanismo oculto"
+    
+    do {
+        $choice = Read-Host "Elige 1 o 2"
+    } until ($choice -match "^[12]$")
+    
+    if ($choice -eq "1") { FuerzaBruta }
+    else { Mecanismo }
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function FuerzaBruta {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "Red"
+    Write-Host "Intentas romper la trampa con tu espada, pero activa un hechizo de autodestruccion."
+    Write-Host "Todo se vuelve blanco."
+    Final2
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Mecanismo {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "Blue"
+    Write-Host "Encuentras un patron en el suelo y lo activas con cuidado."
+    Write-Host "La trampa se desactiva y puedes tomar el Cristal."
+    Write-Host "Que haras ahora?"
+    Write-Host "1. Regresar a Eldoria"
+    Write-Host "2. Usar el poder del Cristal para ti mismo"
+    
+    do {
+        $choice = Read-Host "Elige 1 o 2"
+    } until ($choice -match "^[12]$")
+    
+    if ($choice -eq "1") { Final3 }
+    else { Final4 }
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function BuscarPista {
+    Clear-Host
+    $host.UI.RawUI.ForegroundColor = "DarkYellow"
+    Write-Host "Ignoras la Torre y sigues el consejo de la criatura."
+    Write-Host "Descubres que el verdadero Cristal estaba oculto en el Templo del Alba."
+    Final3
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Final1 {
+    $host.UI.RawUI.ForegroundColor = "Gray"
+    Write-Host "FINAL: DESTINO SELLADO"
+    Write-Host "Fuiste derrotado antes de conocer la verdad."
+    pause
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+
+function Final2 {
+    $host.UI.RawUI.ForegroundColor = "DarkRed"
+    Write-Host "FINAL: EL FIN DEL REINO"
+    Write-Host "El hechizo destruyo la torre y contigo dentro."
+    pause
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Final3 {
+    $host.UI.RawUI.ForegroundColor = "Green"
+    Write-Host "FINAL: EL HEROE DE ELDORIA"
+    Write-Host "Regresas con el Cristal del Alba y restauras el equilibrio."
+    pause
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+function Final4 {
+    $host.UI.RawUI.ForegroundColor = "Magenta"
+    Write-Host "FINAL: EL NUEVO SENIOR OSCURO"
+    Write-Host "Decides usar el Cristal para aumentar tu poder."
+    pause
+    $host.UI.RawUI.ForegroundColor = "White"
+}
+
+# Iniciar el juego
+ElegirDestino
